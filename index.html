@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아산창호시스템 OKR·성과관리 정착 컨설팅 제안서 · 가인지컨설팅그룹</title>
+<style>
+/* ============================================================
+   브랜드 토큰: 아산창호시스템 / OKR·성과관리 정착 컨설팅
+   딥네이비 + 번트오렌지(목표 강조) 색상 시스템.
+   accent(오렌지)는 룰·바·번호·다크밴드 강조 및 작은 라벨에. 본문은 ink, 라벨은 navy.
+   ============================================================ */
+:root{
+  --navy-deep:#0F1E38; --navy:#16294A; --navy-bright:#2B4C86; --ink:#15243D;
+  --gold:#C2410C; --gold-soft:rgba(194,65,12,.40); --sage:#FBA94C; --accent-ink:#9A3412;
+  --ivory:#F5F7FA; --paper:#FFFFFF; --paper-2:#EDF1F8;
+  --line:rgba(21,36,61,.14); --line-2:rgba(21,36,61,.08);
+  --muted:#56657B; --muted-2:#7C88A0; --label:#2B4C86;
+}
+:root,body{margin:0;word-break:keep-all;overflow-wrap:break-word}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Segoe UI",sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5,p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 48px}
+
+/* progress + nav */
+.progress{position:fixed;left:0;top:0;height:3px;width:0%;background:linear-gradient(90deg,var(--navy-bright),var(--gold));z-index:90}
+.nav{position:sticky;top:0;z-index:80;background:rgba(15,30,56,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(251,169,76,.30)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav .mark{color:var(--ivory);font-weight:800;font-size:14px;letter-spacing:.04em}
+.nav .links{display:flex;gap:2px}
+.nav a{color:rgba(245,247,250,.78);text-decoration:none;font-size:13.5px;font-weight:700;padding:7px 12px;border-radius:999px;white-space:nowrap}
+.nav a:hover{color:#fff;background:rgba(245,247,250,.10)}
+.nav a.active{color:var(--navy-deep);background:var(--sage)}
+
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+  background:radial-gradient(circle at 80% 16%,rgba(251,169,76,.18),transparent 34%),linear-gradient(135deg,#0F1E38 0%,#16294A 50%,#1E3A6B 100%);color:var(--ivory)}
+.hero::after{content:"";position:absolute;inset:20px;border:1px solid rgba(245,247,250,.24);pointer-events:none;z-index:2}
+.hero .inner{position:relative;z-index:3;padding:60px 0 88px}
+.hero .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:86px}
+.hero .brand{display:flex;align-items:center;gap:14px;font-weight:800;font-size:20px;letter-spacing:.04em}
+.hero .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 5px rgba(251,169,76,.18)}
+.hero .doc-tag{font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--sage)}
+.eyebrow-line{display:inline-flex;align-items:center;gap:12px;color:var(--sage);font-size:13px;font-weight:800;letter-spacing:.12em}
+.eyebrow-line::before{content:"";width:44px;height:1px;background:var(--sage)}
+.hero h1{margin-top:18px;font-size:58px;line-height:1.16;font-weight:800;letter-spacing:-.02em}
+.hero h1 .accent{color:var(--sage)}
+.hero .lede{margin-top:24px;font-size:19px;line-height:1.74;color:rgba(245,247,250,.90);max-width:710px;font-weight:600}
+.hero .meta{display:flex;gap:10px;margin-top:38px;flex-wrap:wrap}
+.hero .chip{padding:8px 16px;border:1px solid rgba(245,247,250,.32);border-radius:999px;font-size:13px;font-weight:700;color:rgba(245,247,250,.92)}
+.hero .chip.lead{border-color:var(--sage);color:var(--sage)}
+
+/* section scaffolding */
+.sec-pad{padding:92px 0 98px}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
+.sec-no{font-size:62px;font-weight:800;color:transparent;-webkit-text-stroke:1.4px var(--gold);line-height:1}
+.sec-kicker{font-size:13px;font-weight:800;letter-spacing:.16em;color:var(--label)}
+.sec-title{font-size:38px;font-weight:800;line-height:1.24;letter-spacing:-.02em;margin-top:6px}
+.sec-desc{margin-top:16px;font-size:17.5px;color:var(--muted);max-width:820px;font-weight:600;line-height:1.78}
+.gold-rule{width:64px;height:3px;background:var(--gold);margin:24px 0 0}
+.paper-alt{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+.block-label{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--navy-bright);margin:56px 0 18px}
+.block-label .bl-no{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 9px;border-radius:8px;background:var(--gold);color:#fff;font-size:15px;font-weight:800}
+.block-label .bl-sub{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:0}
+
+/* effect list */
+.effect{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--line)}
+.effect:last-child{border-bottom:1px solid var(--line)}
+.effect .no{font-size:23px;font-weight:800;color:var(--gold)}
+.effect h4{font-size:19px;font-weight:800;margin-bottom:6px}
+.effect p{font-size:15.5px;color:var(--muted);line-height:1.72}
+.callout{margin-top:48px;padding:30px 38px;background:var(--navy-deep);color:var(--ivory);font-size:20px;font-weight:700;line-height:1.7;border-left:6px solid var(--gold)}
+.callout .em{color:var(--sage)}
+.callout .src{display:block;margin-top:10px;font-size:13px;font-weight:600;color:rgba(245,247,250,.6)}
+
+/* summary strip */
+.sumstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.sumstrip .s{background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy-bright);padding:24px 24px 26px}
+.sumstrip .s:nth-child(2){border-top-color:var(--gold)}
+.sumstrip .s .k{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gold);margin-bottom:10px}
+.sumstrip .s b{display:block;font-size:21px;font-weight:800;margin-bottom:8px;line-height:1.3}
+.sumstrip .s p{font-size:14.5px;color:var(--muted);line-height:1.68}
+
+/* triad */
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.triad .t{background:#fff;border:1px solid var(--line);padding:28px 26px;position:relative}
+.triad .t::after{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--navy-bright)}
+.triad .t:nth-child(2)::after{background:var(--gold)}
+.triad .t .tn{font-size:12px;font-weight:800;letter-spacing:.14em;color:var(--gold);margin-bottom:12px}
+.triad .t h4{font-size:21px;font-weight:800;margin-bottom:10px}
+.triad .t p{font-size:15px;color:var(--muted);line-height:1.72}
+
+/* chain */
+.chain{display:flex;gap:0;margin-top:8px}
+.chain .step{flex:1;position:relative;background:#fff;border:1px solid var(--line);padding:26px 20px;text-align:center}
+.chain .step+.step{margin-left:34px}
+.chain .step+.step::before{content:"\2192";position:absolute;left:-28px;top:50%;transform:translateY(-50%);color:var(--gold);font-size:22px;font-weight:800}
+.chain .step .k{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:8px}
+.chain .step b{display:block;font-size:19px;font-weight:800;margin-bottom:8px}
+.chain .step span{font-size:14px;color:var(--muted);line-height:1.6;display:block}
+.chain .step::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--navy-bright)}
+.chain .step:nth-child(even)::after{background:var(--gold)}
+
+/* foundation block */
+.fnd{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;margin-top:4px}
+.fnd .card{background:#fff;border:1px solid var(--line);padding:26px 28px}
+.fnd .card.main{border-left:5px solid var(--gold)}
+.fnd .card.root{background:linear-gradient(180deg,#0F1E38,#16294A);color:var(--ivory);border-color:var(--navy-deep)}
+.fnd .card h5{font-size:13px;font-weight:800;letter-spacing:.1em;color:var(--label);margin-bottom:12px}
+.fnd .card.root h5{color:var(--sage)}
+.fnd .card p{font-size:15.5px;color:var(--muted);line-height:1.74}
+.fnd .card.root p{color:rgba(245,247,250,.86)}
+.fnd ul{margin:12px 0 0;padding-left:18px}
+.fnd li{font-size:15px;color:var(--ink);line-height:1.7;margin-bottom:5px}
+.fnd .card.root li{color:rgba(245,247,250,.92)}
+.fnd .tag{display:inline-block;margin-top:14px;padding:5px 12px;border:1px solid var(--gold-soft);border-radius:999px;font-size:12.5px;font-weight:700;color:var(--gold)}
+
+/* ====== ROADMAP GANTT MATRIX (12 sessions) ====== */
+.rm-scroll{margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:14px;background:#fff}
+.gantt{min-width:1040px;display:grid;grid-template-columns:184px repeat(12,minmax(66px,1fr));}
+.g-corner{grid-column:1;grid-row:1/3;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:0 16px;background:var(--navy-deep);color:var(--ivory);font-size:12.5px;font-weight:800;letter-spacing:.04em}
+.g-corner span{color:var(--sage);font-weight:700;font-size:11.5px}
+.g-month{grid-row:1;background:var(--navy);color:var(--ivory);text-align:center;font-size:14px;font-weight:800;letter-spacing:.04em;padding:10px 0;border-left:1px solid rgba(245,247,250,.16)}
+.g-month.m7{grid-column:2/5}
+.g-month.m8{grid-column:5/10}
+.g-month.m9{grid-column:10/14}
+.g-week{grid-row:2;background:var(--navy-bright);color:rgba(245,247,250,.96);text-align:center;font-size:11.5px;font-weight:700;padding:6px 2px;border-left:1px solid rgba(245,247,250,.14)}
+.g-week span{display:block;font-weight:600;font-size:10px;color:rgba(245,247,250,.66);margin-top:1px}
+.g-week.mdiv{border-left:2px solid var(--sage)}
+.g-label{grid-column:1;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:0 16px;border-top:1px solid var(--line);background:var(--paper-2);font-size:14px;font-weight:800;color:var(--ink);min-height:62px}
+.g-label .ph{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--gold)}
+.g-lane{grid-column:2/14;border-top:1px solid var(--line);min-height:62px;
+  background-image:repeating-linear-gradient(to right,transparent,transparent calc(8.3333% - 1px),var(--line-2) calc(8.3333% - 1px),var(--line-2) 8.3333%);
+  position:relative}
+.g-bar{grid-row:var(--r);display:flex;align-items:center;justify-content:center;text-align:center;
+  margin:10px 5px;padding:5px 7px;border-radius:8px;background:var(--navy-bright);color:#fff;
+  font-size:12px;font-weight:700;line-height:1.28;box-shadow:0 4px 12px rgba(15,30,56,.18);z-index:2}
+.g-bar.kickoff{background:var(--ink)}
+.g-bar.coach{background:var(--navy)}
+.g-bar.km{background:var(--navy-deep);border:1px solid rgba(251,169,76,.5)}
+.g-bar.ghost{background:rgba(43,76,134,.08);border:1.5px dashed var(--navy-bright);color:var(--navy-bright);box-shadow:none;font-weight:700}
+.g-bar.emph{background:linear-gradient(135deg,var(--gold) 0%,#E2620F 100%);box-shadow:0 6px 16px rgba(194,65,12,.32);font-weight:800}
+.g-deliv{grid-column:1/14;display:grid;grid-template-columns:184px 1fr 1fr 1fr;border-top:2px solid var(--navy-bright)}
+.g-deliv .dh{padding:13px 16px;background:var(--paper-2);font-size:12.5px;font-weight:800;color:var(--gold);letter-spacing:.06em;display:flex;align-items:center}
+.g-deliv .dl{padding:13px 16px;border-left:1px solid var(--line);font-size:13px;line-height:1.66;color:var(--ink)}
+.g-deliv .dl b{color:var(--navy-bright);font-weight:800;display:block;margin-bottom:3px}
+.rm-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--muted);font-weight:600}
+.rm-legend i{display:inline-block;width:13px;height:13px;border-radius:4px;margin-right:7px;vertical-align:-1px}
+.rm-legend i.b1{background:var(--navy-bright)}
+.rm-legend i.b2{background:var(--navy)}
+.rm-legend i.b3{background:linear-gradient(135deg,var(--gold),#E2620F)}
+.rm-legend i.b4{background:rgba(43,76,134,.10);border:1.5px dashed var(--navy-bright)}
+.rest-note{margin-top:14px;display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px dashed var(--gold-soft);border-radius:999px;background:rgba(194,65,12,.05);font-size:13.5px;font-weight:700;color:var(--accent-ink)}
+
+/* week timeline */
+.weeks{margin-top:30px;border-top:1px solid var(--line)}
+.wk{display:grid;grid-template-columns:132px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.wk .tag{display:inline-flex;flex-direction:column;gap:3px}
+.wk .tag b{font-size:19px;font-weight:800;color:var(--navy-bright)}
+.wk .tag span{font-size:12.5px;font-weight:700;color:var(--gold);letter-spacing:.02em}
+.wk .body h4{font-size:17.5px;font-weight:800;margin-bottom:5px}
+.wk .body p{font-size:14.5px;color:var(--muted);line-height:1.68}
+.wk .body .ml{margin-top:7px;font-size:13px;color:var(--navy-bright);font-weight:600;line-height:1.6}
+.wk .body .ml b{color:var(--accent-ink);font-weight:800}
+.wk.fin{background:linear-gradient(90deg,rgba(194,65,12,.06),transparent)}
+.wk.fin .tag b{color:var(--gold)}
+.wk.rest{background:repeating-linear-gradient(45deg,rgba(21,36,61,.03),rgba(21,36,61,.03) 10px,transparent 10px,transparent 20px)}
+.wk.rest .tag b{color:var(--muted-2);font-size:16px}
+.wk.rest .body h4{color:var(--muted);font-weight:700}
+
+/* declaration */
+.decl{background:radial-gradient(circle at 24% 18%,rgba(251,169,76,.12),transparent 32%),linear-gradient(135deg,#0F1E38 0%,#16294A 52%,#1E3A6B 100%);color:var(--ivory);text-align:center}
+.decl .inner{padding:104px 0 108px}
+.decl .label{display:inline-flex;align-items:center;gap:10px;color:var(--sage);font-size:11.5px;font-weight:800;letter-spacing:.18em;margin-bottom:18px}
+.decl .label::before,.decl .label::after{content:"";width:30px;height:1px;background:rgba(251,169,76,.8)}
+.decl .big{font-size:50px;font-weight:800;line-height:1.26;color:#fff}
+.decl .big .gold{color:var(--sage)}
+.decl .subline{margin-top:22px;font-size:19px;font-weight:700;color:rgba(245,247,250,.88);max-width:780px;margin-left:auto;margin-right:auto}
+
+/* gainge intro + conditions */
+.org{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;margin-top:8px;align-items:stretch}
+.org .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.org .pillars .p{background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);padding:22px 18px}
+.org .pillars .p .han{font-size:26px;font-weight:800;color:var(--navy-bright);line-height:1}
+.org .pillars .p .en{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--gold);margin:8px 0 8px}
+.org .pillars .p p{font-size:13.5px;color:var(--muted);line-height:1.64}
+.org .why{background:linear-gradient(180deg,#0F1E38,#16294A);color:var(--ivory);border:1px solid var(--navy-deep);padding:28px 30px}
+.org .why h5{font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--sage);margin-bottom:14px}
+.org .why ul{margin:0;padding-left:18px}
+.org .why li{font-size:15px;color:rgba(245,247,250,.9);line-height:1.74;margin-bottom:9px}
+.cond{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.cond .c{background:#fff;border:1px solid var(--line);padding:22px 22px;text-align:left}
+.cond .c .k{font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--gold);margin-bottom:10px}
+.cond .c b{display:block;font-size:22px;font-weight:800;color:var(--ink);line-height:1.2}
+.cond .c span{display:block;margin-top:6px;font-size:13.5px;color:var(--muted);line-height:1.6}
+
+/* deliverables / next */
+.next{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+.n-card{background:#fff;border:1px solid var(--line);padding:30px}
+.n-card.navy{background:var(--navy-deep);color:var(--ivory);border-color:var(--navy-deep)}
+.n-card .no{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--gold);margin-bottom:14px}
+.n-card.navy .no{color:var(--sage)}
+.n-card h4{font-size:20px;font-weight:800;margin-bottom:10px}
+.n-card p{font-size:15px;line-height:1.74;color:var(--muted)}
+.n-card.navy p{color:rgba(245,247,250,.84)}
+.n-card ul{margin:10px 0 0;padding-left:17px}
+.n-card li{font-size:14.5px;line-height:1.7;color:var(--muted);margin-bottom:4px}
+.n-card.navy li{color:rgba(245,247,250,.86)}
+.final{margin-top:64px;text-align:center}
+.final .line{font-size:30px;font-weight:800;line-height:1.5}
+.final .line .gold{color:var(--gold)}
+.cta{margin-top:30px;text-align:center}
+.cta .who{font-size:15px;font-weight:700;color:var(--ink)}
+.cta .who span{color:var(--muted);font-weight:600}
+.note{margin-top:30px;font-size:13.5px;color:var(--muted);line-height:1.7;border-top:1px solid var(--line);padding-top:18px}
+
+footer{background:var(--navy-deep);color:rgba(245,247,250,.72)}
+footer .wrap{display:flex;align-items:center;justify-content:space-between;padding:32px 48px;font-size:13px;font-weight:700;flex-wrap:wrap;gap:10px}
+
+/* responsive / print */
+@media (max-width:1080px){
+  .wrap{padding:0 26px}
+  .sumstrip,.triad,.next,.org,.org .pillars,.cond{grid-template-columns:1fr}
+  .chain{flex-direction:column}.chain .step+.step{margin-left:0;margin-top:30px}
+  .chain .step+.step::before{left:50%;top:-26px;transform:translateX(-50%) rotate(90deg)}
+  .fnd{grid-template-columns:1fr}
+  .cond{grid-template-columns:repeat(2,1fr)}
+  .wk{grid-template-columns:104px 1fr;gap:16px}
+  .hero h1{font-size:40px}.decl .big{font-size:32px}.sec-title{font-size:29px}
+  .nav .links{display:none}
+}
+@media (max-width:600px){
+  .cond{grid-template-columns:1fr}
+}
+@media print{
+  .nav,.progress{display:none!important}
+  body{background:#fff}
+  .hero{min-height:auto}.hero .inner{padding:48px 0}
+  .fnd .card,.n-card,.chain .step,.wk,.triad .t,.sumstrip .s,.org .why,.cond .c{break-inside:avoid}
+  .rm-scroll{overflow:visible;break-inside:avoid;page-break-inside:avoid}.gantt{min-width:0;break-inside:avoid}
+  .decl .inner{padding:60px 0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* quiet edit layer */
+#rp-edit-root{position:fixed;right:18px;bottom:18px;z-index:200;display:flex;align-items:center;gap:8px;font-family:inherit}
+#rp-edit-toggle{width:40px;height:40px;border-radius:50%;border:1px solid rgba(21,36,61,.25);background:rgba(255,255,255,.85);color:var(--ink);font-size:17px;cursor:pointer;opacity:.4;transition:opacity .2s;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+#rp-edit-toggle:hover{opacity:1}
+body.rp-editing #rp-edit-toggle{opacity:1;background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+#rp-edit-bar{display:none;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;border:1px solid rgba(21,36,61,.2);background:rgba(255,255,255,.95);box-shadow:0 10px 28px rgba(0,0,0,.16)}
+body.rp-editing #rp-edit-bar{display:flex}
+#rp-edit-bar button{height:30px;padding:0 12px;border-radius:999px;border:1px solid rgba(21,36,61,.22);background:#fff;color:var(--ink);font-size:12.5px;font-weight:700;cursor:pointer;font-family:inherit}
+#rp-edit-bar button:hover{background:var(--ink);color:#fff}
+#rp-edit-bar button.gold{border-color:var(--gold);background:var(--gold);color:#fff}
+#rp-edit-status{font-size:11.5px;font-weight:700;color:var(--muted);max-width:150px;white-space:nowrap}
+body.rp-editing [contenteditable="true"]:hover{outline:1px dashed rgba(194,65,12,.7);outline-offset:3px}
+body.rp-editing [contenteditable="true"]:focus{outline:2px dashed rgba(194,65,12,.95);outline-offset:3px;border-radius:3px}
+@media print{#rp-edit-root{display:none!important}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="hero" id="top">
+  <div class="wrap inner">
+    <div class="topline">
+      <div class="brand"><span class="dot"></span>가인지컨설팅그룹</div>
+      <div class="doc-tag">PROPOSAL · 컨설팅 제안서</div>
+    </div>
+    <div class="eyebrow-line">FOR. 아산창호시스템</div>
+    <h1>세운 목표가<br><span class="accent">매주 실행이 되는</span> 조직</h1>
+    <p class="lede">OKR 수립부터 주간 피드백, 성과관리 코칭, 지식·문화 정착까지. 12주 동안 목표를 세우는 데서 끝내지 않고, 매주 실행으로 잇는 리듬을 아산창호시스템에 심습니다.</p>
+    <div class="meta">
+      <span class="chip lead">제안일 2026.06.26</span>
+      <span class="chip">12주 · 2026.7.6 ~ 9.28</span>
+      <span class="chip">주 1회 월요일 오전 (7/6 오후)</span>
+      <span class="chip">가인지경영(價人智) 기반</span>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <div class="mark">아산창호시스템 · OKR 컨설팅 제안서</div>
+    <div class="links">
+      <a href="#s1">제안 배경</a>
+      <a href="#s2">제안 개요</a>
+      <a href="#s3">진행 로직</a>
+      <a href="#s4">핵심 활동</a>
+      <a href="#s5">12주 로드맵</a>
+      <a href="#s6">산출물</a>
+      <a href="#s7">진행 안내</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ 序. 제안 배경 ============ -->
+<section id="s1" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">序</div><div>
+      <div class="sec-kicker">BACKGROUND · 왜 OKR·성과관리인가</div>
+      <h2 class="sec-title">목표는 세웠는데, 실행이 따로 도는 문제</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">많은 조직에서 경영계획은 연초에 세워지지만, 분기가 지나면 책상 서랍으로 들어갑니다. 목표와 매일의 실행이 따로 돌고, 성과는 연말에 한 번 감으로 평가됩니다. 이 제안은 OKR과 주간 피드백으로 그 간극을 메우는 12주입니다.</p>
+    <div class="effect"><div class="no">01</div><div><h4>목표와 실행의 분리</h4><p>세운 목표가 팀의 주간 업무와 연결되지 않으면, 계획은 문서로 남고 실행은 각자 알아서 굴러갑니다. 목표를 팀 OKR로 내려 정렬하는 일이 먼저 필요합니다.</p></div></div>
+    <div class="effect"><div class="no">02</div><div><h4>점검 리듬의 부재</h4><p>한 달에 한 번도 진척을 같이 보지 않으면, 막힌 일은 늦게 드러나고 방향은 조용히 어긋납니다. 매주 같은 자리에서 진척을 점검하는 리듬이 성과를 만듭니다.</p></div></div>
+    <div class="effect"><div class="no">03</div><div><h4>감에 의존한 성과관리</h4><p>기록과 피드백 없이 연말 인상만으로 성과를 다루면, 잘한 것도 못한 것도 남지 않습니다. 매주의 피드백이 쌓여야 성과관리가 체질이 됩니다.</p></div></div>
+
+    <div class="sumstrip">
+      <div class="s"><div class="k">WHAT · 무엇을</div><b>OKR·성과관리 정착</b><p>하반기 목표를 OKR로 정렬하고, 주간 피드백과 코칭으로 실행까지 정착시킵니다.</p></div>
+      <div class="s"><div class="k">HOW · 어떻게</div><b>수립 → 정착 → 실행 → 내재화</b><p>OKR 수립, 주간피드백 정착, 성과관리 코칭 7회, 지식·문화 정착의 4단계로 진행합니다.</p></div>
+      <div class="s"><div class="k">WHEN · 언제</div><b>12주 · 주 1회</b><p>2026.7.6 ~ 9.28, 월요일 오전 진행 (7/6 오후, 7/27 주간 휴회)으로 매주 한 걸음씩.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ I. 제안 개요 ============ -->
+<section id="s2" class="sec-pad paper-alt">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">I</div><div>
+      <div class="sec-kicker">SOLUTION · 제안 개요</div>
+      <h2 class="sec-title">12주 동안 정착시키는 세 가지</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">OKR 컨설팅은 도구를 도입하는 일이 아니라, 일하는 리듬을 바꾸는 일입니다. 12주 동안 아산창호시스템에 정렬된 목표, 실행 리듬, 성장 자산 세 가지를 함께 심습니다.</p>
+    <div class="triad">
+      <div class="t"><div class="tn">CONTENT 01</div><h4>정렬된 목표 (OKR)</h4><p>회사 경영계획에서 팀 OKR로 목표를 내려 정렬합니다. 모두가 같은 방향, 같은 우선순위를 보게 만듭니다.</p></div>
+      <div class="t"><div class="tn">CONTENT 02</div><h4>실행 리듬 (주간피드백)</h4><p>매주 진척을 점검하는 주간피드백미팅을 팀에 정착시킵니다. 목표가 매일의 실행과 연결됩니다.</p></div>
+      <div class="t"><div class="tn">CONTENT 03</div><h4>성장 자산 (지식·문화)</h4><p>분기를 닫으며 노하우를 지식으로 남기고, OKR 파티로 회고와 다음 분기를 한 흐름으로 잇습니다.</p></div>
+    </div>
+    <div class="callout">12주의 목표는 멋진 OKR 문서가 아니라, <span class="em">아산창호시스템이 스스로 굴리는 OKR 리듬</span>입니다.<span class="src">가인지컨설팅: "사람을 남기고, 시스템을 남깁니다."</span></div>
+  </div>
+</section>
+
+<!-- ============ II. 진행 로직 ============ -->
+<section id="s3" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">II</div><div>
+      <div class="sec-kicker">PROCESS LOGIC · 진행 로직 4 STEP</div>
+      <h2 class="sec-title">세우고, 정착시키고, 코칭하고, 내재화한다</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">12주는 네 단계로 쌓입니다. 목표만 세우면 실행이 빠지고, 코칭만 하면 토대가 없습니다. 수립에서 시작해 주간 리듬을 정착시키고, 코칭으로 끌어올린 뒤, 지식과 문화로 내재화합니다.</p>
+    <div class="chain">
+      <div class="step"><span class="k">STEP 1</span><b>수립</b><span>경영계획캔버스와 팀 OKR로 목표를 세우고 정렬합니다. (1~2주)</span></div>
+      <div class="step"><span class="k">STEP 2</span><b>정착</b><span>주간피드백미팅을 교육하고 팀에 정착시킵니다. (3주~)</span></div>
+      <div class="step"><span class="k">STEP 3</span><b>실행</b><span>성과관리 코칭 7회로 팀의 실행을 동행합니다. (4~11주)</span></div>
+      <div class="step"><span class="k">STEP 4</span><b>내재화</b><span>지식 워크샵과 OKR 파티로 지식·문화에 남깁니다. (9·12주)</span></div>
+    </div>
+    <div class="callout" style="margin-top:40px;border-left-color:var(--navy-bright)">왜 코칭이 7회나 필요한가? <span class="em">주간피드백미팅은 한 번 배운다고 굴러가지 않습니다.</span> 양식 작성, 실제 운영, 피드백의 품질까지 매주 코칭으로 다듬어야 팀의 습관으로 자리 잡습니다. 그래서 8월부터 9월까지 코칭이 반복됩니다.</div>
+  </div>
+</section>
+
+<!-- ============ III. 핵심 활동 ============ -->
+<section id="s4" class="sec-pad paper-alt">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">III</div><div>
+      <div class="sec-kicker">KEY ACTIVITIES · 4단계 핵심 활동</div>
+      <h2 class="sec-title">12주를 채우는 네 가지 활동</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">네 단계 각각에서 실제로 무엇을 하는지, 그리고 그 뿌리가 되는 가인지경영 방법론을 함께 정리했습니다.</p>
+
+    <div class="block-label"><span class="bl-no">1</span>경영계획 · OKR 수립<span class="bl-sub">목표를 세우고 정렬한다 (1~2주)</span></div>
+    <div class="fnd">
+      <div class="card main">
+        <h5>무엇을 하나</h5>
+        <p>하반기 경영계획을 한 장(경영계획캔버스)으로 정렬하고, 팀 단위 계기판과 OKR로 목표를 세웁니다. 경영자·본부장이 그린 큰 그림이 팀장·팀원의 목표로 자연스럽게 내려오게 만듭니다.</p>
+        <ul>
+          <li>하반기 경영계획캔버스(목표 · 전략 · 핵심과제)</li>
+          <li>팀 계기판 + 팀 OKR(Objective · Key Results)</li>
+          <li>회사 목표에서 팀 목표로 정렬</li>
+        </ul>
+      </div>
+      <div class="card root">
+        <h5>가인지 방법론 뿌리</h5>
+        <p>가인지 W-MODEL의 <b>경영 BOARD</b>(연 목표 + 월 계기판 + 분기 OKR)와 OKR 방법론에서 출발합니다. 원칙은 'Forecasting이 아니라 Planning', 회사 목표에서 팀 목표로 내려오는 정렬.</p>
+        <span class="tag">W-MODEL · 경영 BOARD · OKR</span>
+      </div>
+    </div>
+
+    <div class="block-label"><span class="bl-no">2</span>주간피드백미팅 정착<span class="bl-sub">실행을 매주 점검하는 리듬 (3주~)</span></div>
+    <div class="fnd">
+      <div class="card main">
+        <h5>무엇을 하나</h5>
+        <p>OKR이 서랍에 들어가지 않도록, 매주 진척을 점검하는 주간피드백미팅(주피미)을 전직원에게 교육하고 팀에 정착시킵니다. 이후 컨설팅 기간 내내 팀별로 상시 운영됩니다.</p>
+        <ul>
+          <li>주피미 운영법 교육 · 실습(전직원)</li>
+          <li>팀별 주피미 상시 운영(주 1회)</li>
+          <li>주간 우선순위 · 진척 · 막힌 점 공유</li>
+        </ul>
+      </div>
+      <div class="card root">
+        <h5>가인지 방법론 뿌리</h5>
+        <p>가인지 디바이커(Divide &amp; Conquer), 일을 과제별로 나눠 매주 함께 점검하는 업무 방식의 <b>주 1회 피드백</b>입니다. 일을 조직화하고, 같은 자리에서 진척을 점검하며, 실행에 리듬을 넣는 핵심 장치.</p>
+        <span class="tag">디바이커 · 주간피드백</span>
+      </div>
+    </div>
+
+    <div class="block-label"><span class="bl-no">3</span>성과관리 코칭<span class="bl-sub">7회에 걸쳐 실행을 동행한다 (4~11주)</span></div>
+    <div class="fnd">
+      <div class="card main">
+        <h5>무엇을 하나</h5>
+        <p>팀별 주피미가 실제로 굴러가도록 7회에 걸쳐 성과관리 코칭을 동행합니다. 양식 작성부터 실제 운영, 피드백의 품질까지 단계적으로 끌어올려 팀의 습관으로 만듭니다.</p>
+        <ul>
+          <li>팀별 성과관리 코칭 7회차</li>
+          <li>주간피드백 양식 · 운영 루틴 정착</li>
+          <li>목표 대비 진척 점검과 조정</li>
+        </ul>
+      </div>
+      <div class="card root">
+        <h5>가인지 방법론 뿌리</h5>
+        <p>가인지 <b>스프린트 코칭</b>입니다. 성과는 연말의 한 번 평가가 아니라, 매주 돌아가는 피드백 사이클에서 만들어진다는 관점 위에서 팀을 동행합니다.</p>
+        <span class="tag">스프린트 코칭 · 성과관리 사이클</span>
+      </div>
+    </div>
+
+    <div class="block-label"><span class="bl-no">4</span>지식경영 · 문화 정착<span class="bl-sub">배운 것을 자산으로 남긴다 (9 · 12주)</span></div>
+    <div class="fnd">
+      <div class="card main">
+        <h5>무엇을 하나</h5>
+        <p>분기를 닫으며 배운 것을 지식으로 남기고(지식 워크샵), OKR 파티로 분기를 리뷰하고 다음 분기를 엽니다. 성과와 노하우가 개인이 아니라 조직에 쌓이게 만듭니다.</p>
+        <ul>
+          <li>지식 워크샵(노하우를 재사용 가능한 형태로)</li>
+          <li>OKR 파티: 팀별 분기 리뷰 · 차기 플랜</li>
+          <li>개인별 지식 발표 · 문화 다지기</li>
+        </ul>
+      </div>
+      <div class="card root">
+        <h5>가인지 방법론 뿌리</h5>
+        <p>가인지 <b>지식경영</b>(지식 = 재생산 · 확산이 가능한 성과)과 <b>OKR 파티</b>입니다. OKR 파티는 분기 리듬의 마침표이자 다음 분기의 출발점이 됩니다.</p>
+        <span class="tag">지식경영 · OKR 파티</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 선언 밴드 ============ -->
+<section class="decl">
+  <div class="wrap inner">
+    <div class="label">OKR</div>
+    <div class="big">목표를 세우는 데서 끝내지 않고<br><span class="gold">매주 실행으로</span> 잇는다</div>
+    <p class="subline">12주 뒤, 아산창호시스템에는 OKR을 굴리는 주간 리듬과 그것을 스스로 운영하는 팀이 남습니다.</p>
+  </div>
+</section>
+
+<!-- ============ IV. 12주 로드맵 ============ -->
+<section id="s5" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">IV</div><div>
+      <div class="sec-kicker">ROADMAP · 12주 추진 로드맵</div>
+      <h2 class="sec-title">한 주에 한 걸음, OKR을 굴린다</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">2026년 7월 6일부터 9월 28일까지, 매주 월요일 오전에 진행합니다(첫 주 7/6은 오후). 7월 27일 주간은 휴가로 휴회하여, 총 12회의 세션으로 OKR 수립부터 정착, 코칭, 분기 마무리까지 이어집니다.</p>
+
+    <!-- Gantt matrix (12 sessions) -->
+    <div class="rm-scroll">
+      <div class="gantt">
+        <div class="g-corner">구분<span>주차 · 일자</span></div>
+        <div class="g-month m7">7월</div>
+        <div class="g-month m8">8월</div>
+        <div class="g-month m9">9월</div>
+        <div class="g-week">1주<span>7/6</span></div>
+        <div class="g-week">2주<span>7/13</span></div>
+        <div class="g-week">3주<span>7/20</span></div>
+        <div class="g-week mdiv">4주<span>8/3</span></div>
+        <div class="g-week">5주<span>8/10</span></div>
+        <div class="g-week">6주<span>8/17</span></div>
+        <div class="g-week">7주<span>8/24</span></div>
+        <div class="g-week">8주<span>8/31</span></div>
+        <div class="g-week mdiv">9주<span>9/7</span></div>
+        <div class="g-week">10주<span>9/14</span></div>
+        <div class="g-week">11주<span>9/21</span></div>
+        <div class="g-week">12주<span>9/28</span></div>
+
+        <!-- Row 3: 경영계획·OKR 수립 -->
+        <div class="g-label" style="grid-row:3"><span class="ph">수립</span>경영계획 · OKR 수립</div>
+        <div class="g-lane" style="grid-row:3"></div>
+        <div class="g-bar kickoff" style="grid-row:3;grid-column:2/3">경영계획 캔버스</div>
+        <div class="g-bar" style="grid-row:3;grid-column:3/4">팀 계기판 · OKR</div>
+
+        <!-- Row 4: 주간피드백미팅 -->
+        <div class="g-label" style="grid-row:4"><span class="ph">정착</span>주간피드백미팅</div>
+        <div class="g-lane" style="grid-row:4"></div>
+        <div class="g-bar" style="grid-row:4;grid-column:4/5">주피미 교육 · 실습</div>
+        <div class="g-bar ghost" style="grid-row:4;grid-column:5/13">팀별 주간피드백미팅 상시 운영</div>
+
+        <!-- Row 5: 성과관리 코칭 -->
+        <div class="g-label" style="grid-row:5"><span class="ph">실행</span>성과관리 코칭</div>
+        <div class="g-lane" style="grid-row:5"></div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:5/6">코칭 1회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:6/7">코칭 2회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:7/8">코칭 3회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:8/9">코칭 4회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:9/10">코칭 5회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:11/12">코칭 6회</div>
+        <div class="g-bar coach" style="grid-row:5;grid-column:12/13">코칭 7회</div>
+
+        <!-- Row 6: 지식경영·문화 -->
+        <div class="g-label" style="grid-row:6"><span class="ph">내재화</span>지식경영 · 문화</div>
+        <div class="g-lane" style="grid-row:6"></div>
+        <div class="g-bar km" style="grid-row:6;grid-column:10/11">지식 워크샵</div>
+        <div class="g-bar emph" style="grid-row:6;grid-column:13/14">OKR 파티</div>
+
+        <!-- Deliverables band -->
+        <div class="g-deliv" style="grid-row:7">
+          <div class="dh">산출물</div>
+          <div class="dl"><b>7월</b>하반기 경영계획캔버스 / 팀 계기판 · OKR / 주간피드백미팅 체계</div>
+          <div class="dl"><b>8월</b>팀별 주피미 정착 / 성과관리 코칭 1~5회차 기록</div>
+          <div class="dl"><b>9월</b>지식 워크샵 산출물 / 코칭 6~7회차 / 분기 OKR 리뷰 · 차기 플랜</div>
+        </div>
+      </div>
+    </div>
+    <div class="rm-legend">
+      <span><i class="b1"></i>수립 · 교육</span>
+      <span><i class="b2"></i>성과관리 코칭(주 1회)</span>
+      <span><i class="b4"></i>주피미 상시 운영</span>
+      <span><i class="b3"></i>OKR 파티(분기 완결)</span>
+    </div>
+    <div class="rest-note">7월 27일 주간은 휴가로 휴회합니다. (3주 차와 4주 차 사이)</div>
+
+    <!-- Week-by-week detail -->
+    <div class="weeks">
+      <div class="wk"><div class="tag"><b>1주</b><span>7/6 (월) 오후</span></div><div class="body"><h4>하반기 경영계획 수립 (경영계획캔버스)</h4><p>경영자와 본부장이 하반기 목표 · 전략 · 핵심과제를 한 장으로 정렬합니다.</p><p class="ml"><b>참석</b> 경영자 · 본부장 &nbsp;·&nbsp; <b>사전과제</b> 경영계획 초안 작성</p></div></div>
+      <div class="wk"><div class="tag"><b>2주</b><span>7/13 (월) 오전</span></div><div class="body"><h4>팀 계기판 · OKR 수립</h4><p>경영계획을 팀 단위 계기판과 OKR로 내려, 팀의 목표와 핵심결과를 정의합니다.</p><p class="ml"><b>참석</b> 팀장 필수 · 팀원 선택 &nbsp;·&nbsp; <b>사전과제</b> 상반기 리뷰 / 하반기 플랜 (참고: 경영계획캔버스)</p></div></div>
+      <div class="wk"><div class="tag"><b>3주</b><span>7/20 (월) 오전</span></div><div class="body"><h4>주간피드백미팅 교육과 실습</h4><p>주간피드백미팅의 목적과 운영법을 전직원이 함께 배우고 실습합니다.</p><p class="ml"><b>참석</b> 전직원</p></div></div>
+      <div class="wk rest"><div class="tag"><b>휴회</b><span>7/27 주간</span></div><div class="body"><h4>휴가로 휴회</h4><p>7월 27일 주간은 휴가 기간으로 세션을 진행하지 않습니다. 다음 세션은 8월 3일에 재개합니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>4주</b><span>8/3 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 1회차</h4><p>팀별로 주간피드백미팅을 실제로 운영하고, 첫 성과관리 코칭을 진행합니다.</p><p class="ml"><b>방식</b> 팀별 코칭 &nbsp;·&nbsp; <b>사전과제</b> 주간피드백 양식 작성</p></div></div>
+      <div class="wk"><div class="tag"><b>5주</b><span>8/10 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 2회차</h4><p>주간 리듬을 이어가며 운영을 다듬고, 피드백의 질을 끌어올립니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>6주</b><span>8/17 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 3회차</h4><p>목표 대비 진척을 점검하고, 막힌 일을 함께 풀어냅니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>7주</b><span>8/24 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 4회차</h4><p>OKR 진척을 기준으로 우선순위를 다시 맞춥니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>8주</b><span>8/31 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 5회차</h4><p>한 달 이상 이어진 주간 리듬을 점검하고, 팀의 자체 운영 역량을 확인합니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>9주</b><span>9/7 (월) 오전</span></div><div class="body"><h4>지식 워크샵</h4><p>지금까지의 실행에서 얻은 노하우를 꺼내, 재사용 가능한 지식으로 정리합니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>10주</b><span>9/14 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 6회차</h4><p>분기 마무리를 앞두고 OKR 달성을 점검하고 조정합니다.</p></div></div>
+      <div class="wk"><div class="tag"><b>11주</b><span>9/21 (월) 오전</span></div><div class="body"><h4>팀별 주피미 진행 · 성과관리 코칭 7회차</h4><p>마지막 코칭으로 운영 루틴을 굳히고, 분기 리뷰를 준비합니다.</p></div></div>
+      <div class="wk fin"><div class="tag"><b>12주</b><span>9/28 (월) 오전</span></div><div class="body"><h4>OKR 파티</h4><p>팀별 분기 리뷰와 차기 플랜, 개인별 지식 발표, 문화 다지기로 한 분기를 닫고 다음 분기를 엽니다.</p></div></div>
+    </div>
+    <p class="note">주차 라벨과 일자는 제공된 일정(2026.7.6 착수, 매주 월요일 오전, 7/6 오후, 7/27 주간 휴회) 기준입니다. 컨설팅 내용 · 일정은 상황에 따라 협의 후 변경될 수 있습니다.</p>
+  </div>
+</section>
+
+<!-- ============ V. 산출물 & 기대효과 ============ -->
+<section id="s6" class="sec-pad paper-alt">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">V</div><div>
+      <div class="sec-kicker">DELIVERABLES · 산출물과 기대효과</div>
+      <h2 class="sec-title">12주가 남기는 것</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <div class="next">
+      <div class="n-card"><div class="no">OUTPUT · 산출물</div><h4>손에 남는 결과물</h4>
+        <ul>
+          <li>하반기 경영계획캔버스</li>
+          <li>팀별 계기판 · OKR</li>
+          <li>주간피드백미팅 운영 체계 · 양식</li>
+          <li>성과관리 코칭 7회 기록</li>
+          <li>지식 워크샵 산출물</li>
+          <li>분기 OKR 리뷰 · 차기 플랜(OKR 파티)</li>
+        </ul>
+      </div>
+      <div class="n-card navy"><div class="no">EFFECT · 기대효과</div><h4>달라지는 것</h4>
+        <ul>
+          <li>회사 · 팀 목표가 OKR로 정렬</li>
+          <li>매주 점검하는 실행 리듬 정착</li>
+          <li>감이 아니라 피드백 기반 성과관리</li>
+          <li>노하우가 지식으로 축적</li>
+        </ul>
+      </div>
+      <div class="n-card"><div class="no">NEXT · 다음 단계(옵션)</div><h4>분기 이후</h4>
+        <ul>
+          <li>차기 분기 OKR 사이클 자체 운영</li>
+          <li>핵심습관 캠페인으로 문화 정착</li>
+          <li>평가 · 보상 체계와 연계</li>
+        </ul>
+        <p style="margin-top:14px">가인지경영은 '도구적 · 인적 전수'로 OKR 리듬이 아산창호시스템에 이식되도록 동행합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VI. 가인지 소개 & 진행 안내 ============ -->
+<section id="s7" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head"><div class="sec-no">VI</div><div>
+      <div class="sec-kicker">WHY GAINGE · 가인지컨설팅그룹과 진행 안내</div>
+      <h2 class="sec-title">검증된 방법론으로, 끝까지 동행합니다</h2>
+    </div></div>
+    <div class="gold-rule"></div>
+    <p class="sec-desc">가인지컨설팅그룹은 중소 · 중견기업의 경영을 시스템으로 세우는 일을 해온 컨설팅 그룹입니다. 가인지경영(價人智)은 <b>가치 · 인재 · 지식</b> 세 기둥으로 회사를 세우는 방법론으로, 이번 OKR 컨설팅의 네 단계는 모두 이 가치 · 인재 · 지식 위에 설계되었습니다.</p>
+    <div class="org">
+      <div class="pillars">
+        <div class="p"><div class="han">價</div><div class="en">VALUE · 가치경영</div><p>경영계획과 OKR로 방향과 목표를 세웁니다. (경영계획캔버스 · 팀 OKR)</p></div>
+        <div class="p"><div class="han">人</div><div class="en">TALENT · 인재경영</div><p>주간피드백과 코칭으로 사람의 성과를 키웁니다. (주피미 · 성과관리 코칭)</p></div>
+        <div class="p"><div class="han">智</div><div class="en">KNOWLEDGE · 지식경영</div><p>지식과 문화로 성과를 자산으로 남깁니다. (지식 워크샵 · OKR 파티)</p></div>
+      </div>
+      <div class="why">
+        <h5>왜 가인지인가</h5>
+        <ul>
+          <li>도구를 새로 발명하지 않고, 검증된 가인지경영 도구를 아산창호시스템에 맞춰 세팅합니다.</li>
+          <li>경영자부터 팀원까지 함께 굴려, 컨설팅이 끝나도 OKR 리듬이 회사에 남습니다.</li>
+          <li>'사람을 남기고 시스템을 남긴다', 자체 운영이 가능한 상태까지 동행합니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block-label"><span class="bl-no">·</span>진행 조건<span class="bl-sub">제공 일정 기준 요약</span></div>
+    <div class="cond">
+      <div class="c"><div class="k">PERIOD · 기간</div><b>12주</b><span>2026.7.6 ~ 9.28</span></div>
+      <div class="c"><div class="k">CADENCE · 방식</div><b>주 1회 · 월요일 오전</b><span>총 12회 (7/6 오후, 7/27 주간 휴회)</span></div>
+      <div class="c"><div class="k">PARTNER · 의뢰자</div><b>아산창호시스템</b><span>OKR · 성과관리 정착</span></div>
+      <div class="c"><div class="k">FIRM · 수임자</div><b>가인지컨설팅그룹</b><span>가인지경영(價人智) 기반</span></div>
+    </div>
+
+    <div class="final"><p class="line">12주 뒤 남는 것은 목표 문서가 아니라, <span class="gold">스스로 OKR을 굴리는 아산창호시스템</span>입니다.</p></div>
+    <div class="cta">
+      <p class="who">제안 · 가인지컨설팅그룹 &nbsp;|&nbsp; <span>비즈니스는 사랑입니다</span></p>
+    </div>
+    <p class="note">근거: 아산창호시스템 OKR 컨설팅 일정(2026.7.6 ~ 9.28, 주 1회 월요일 오전, 7/6 오후, 7/27 주간 휴회, 총 12회) · 가인지경영 방법론(價人智 3-Pillar) · OKR / 주간피드백 / 스프린트 코칭 운영 체계. 컨설팅 내용 · 일정은 상황에 따라 협의 후 변경될 수 있습니다.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span>가인지컨설팅그룹 · 비즈니스는 사랑입니다</span><span>아산창호시스템 OKR 컨설팅 제안서 · 2026.06.26</span></div>
+</footer>
+
+<script>
+(function(){
+var FILE_NAME=decodeURIComponent((location.pathname.split('/').pop()||'proposal.html'));
+var DRAFT_KEY='rp-draft:'+FILE_NAME;
+var EDIT_SEL='h1,h2,h3,h4,h5,p,li,b,span.k,.tn,.chip,.doc-tag,.eyebrow-line,.sec-kicker,.sec-no,.block-label,.bl-sub,.decl .label,.n-card .no,.wk .tag b,.wk .tag span,.fnd .tag,.g-bar,.g-label,.g-month,.g-week,.dl,.dh,.cond .c .k,.org .pillars .en,.rest-note,footer span,.brand,.mark';
+var editing=false,saveTimer=null,statusEl=null;
+
+function initReport(){
+  var bar=document.getElementById('progress');
+  function onScroll(){var h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var links=Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var map={};links.forEach(function(a){var id=a.getAttribute('href').slice(1);var el=document.getElementById(id);if(el)map[id]=a;});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.remove('active')});var a=map[e.target.id];if(a)a.classList.add('active');}
+    });},{rootMargin:'-30% 0px -60% 0px'});
+    Object.keys(map).forEach(function(id){io.observe(document.getElementById(id))});
+  }
+}
+function snapshot(){
+  var clone=document.body.cloneNode(true);
+  var root=clone.querySelector('#rp-edit-root');if(root)root.remove();
+  clone.classList.remove('rp-editing');
+  clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
+  return clone.innerHTML;
+}
+function setStatus(t){if(statusEl)statusEl.textContent=t;}
+function scheduleDraft(){
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(function(){
+    try{localStorage.setItem(DRAFT_KEY,snapshot());setStatus('임시 저장됨');}catch(e){setStatus('임시 저장 실패');}
+  },500);
+}
+function setEditing(on){
+  editing=on;
+  document.body.classList.toggle('rp-editing',on);
+  document.querySelectorAll(EDIT_SEL).forEach(function(el){
+    if(el.closest('#rp-edit-root')||el.closest('.nav'))return;
+    if(on){el.setAttribute('contenteditable','true');el.setAttribute('spellcheck','false');}
+    else{el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');}
+  });
+  setStatus(on?'편집 모드 · Enter=줄내림':'');
+}
+function saveHTML(){
+  setEditing(false);
+  var doc=document.documentElement.cloneNode(true);
+  var root=doc.querySelector('#rp-edit-root');if(root)root.remove();
+  doc.querySelector('body').classList.remove('rp-editing');
+  doc.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
+  var html='<!doctype html>\n'+doc.outerHTML;
+  if(window.showSaveFilePicker){
+    window.showSaveFilePicker({suggestedName:FILE_NAME,types:[{description:'HTML',accept:{'text/html':['.html']}}]})
+      .then(function(h){return h.createWritable().then(function(w){return w.write(html).then(function(){return w.close()})})})
+      .then(function(){setStatus('HTML 저장 완료');setEditing(true);})
+      .catch(function(){setEditing(true);});
+  }else{
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+    a.download=FILE_NAME;a.click();URL.revokeObjectURL(a.href);
+    setStatus('HTML 다운로드됨');setEditing(true);
+  }
+}
+function resetDraft(){
+  if(!confirm('임시 저장본을 버리고 파일 원본으로 되돌릴까요?'))return;
+  try{localStorage.removeItem(DRAFT_KEY);}catch(e){}
+  location.reload();
+}
+function initEditor(){
+  var root=document.createElement('div');root.id='rp-edit-root';
+  root.innerHTML='<div id="rp-edit-bar">'
+    +'<button id="rp-save" class="gold" title="수정본을 완성된 HTML 파일로 저장">HTML로 저장</button>'
+    +'<button id="rp-reset" title="임시 저장본을 버리고 원본으로">초기화</button>'
+    +'<span id="rp-edit-status"></span></div>'
+    +'<button id="rp-edit-toggle" title="편집 (Ctrl/Cmd+E)">&#9998;</button>';
+  document.body.appendChild(root);
+  statusEl=root.querySelector('#rp-edit-status');
+  root.querySelector('#rp-edit-toggle').addEventListener('click',function(){setEditing(!editing);});
+  root.querySelector('#rp-save').addEventListener('click',saveHTML);
+  root.querySelector('#rp-reset').addEventListener('click',resetDraft);
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&(e.key==='e'||e.key==='E')){e.preventDefault();setEditing(!editing);}
+    if(editing&&e.key==='Enter'&&e.target.isContentEditable){e.preventDefault();document.execCommand('insertLineBreak');}
+  });
+  document.addEventListener('input',function(e){if(editing&&e.target.isContentEditable)scheduleDraft();});
+  document.addEventListener('paste',function(e){
+    if(!editing||!e.target.isContentEditable)return;
+    e.preventDefault();
+    var t=(e.clipboardData||window.clipboardData).getData('text/plain');
+    document.execCommand('insertText',false,t);
+  });
+}
+try{
+  var draft=localStorage.getItem(DRAFT_KEY);
+  if(draft)document.body.innerHTML=draft;
+}catch(e){}
+initReport();
+initEditor();
+try{if(localStorage.getItem(DRAFT_KEY))setStatus('임시 저장본 표시 중');}catch(e){}
+})();
+</script>
+</body>
+</html>
